@@ -28,6 +28,11 @@ public class Sistema {
 		return aux;
 	}
 	
+	public ArrayList<Pelicula> RecomendarPeliGrupo(Grupo g){
+		ArrayList<Pelicula> aux = new ArrayList<>();
+		return aux;
+	}
+	
 	public int CantidadVotos(Pelicula p) {
 		return p.getCantdevotos();
 	}
