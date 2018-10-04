@@ -8,21 +8,24 @@ public class Pelicula {
 	private int duración;
 	private ArrayList<String>categorias = new ArrayList<>();
 	private int añoestreno;
-	private int clasificacion;
-	private int cantidaddevotos;
+	private ArrayList<Integer> clasificacion = new ArrayList<>();
 	
 	public Pelicula(String titulo, String sinopsis, int duración, int añoestreno) {
 		this.titulo = titulo;
 		this.sinopsis = sinopsis;
 		this.duración = duración;
 		this.añoestreno = añoestreno;
-		this.clasificacion = 0;
-		this.cantidaddevotos = 0;
+
 	}
 	
 	
-	public double Getclasificacion() {
-		return clasificacion/cantidaddevotos;
+	public double getClasificacion() {
+		int cantidaddevotos = clasificacion.size();
+		int auxsuma = 0;
+		for (int i=0; i<clasificacion.size();i++) {
+			auxsuma +=this.clasificacion.get(i);
+		}
+		return auxsuma/cantidaddevotos;
 	}
 	
 	public void Añadircategoria(String c) {
@@ -50,12 +53,11 @@ public class Pelicula {
 	 }
 	 
 	 public int Getcantdevotos() {
-		 return this.cantidaddevotos;
+		 return this.clasificacion.size();
 	 }
 	 
 	 public void Setclasificacion(int clasif){
-		 this.clasificacion += clasif;
-		 this.cantidaddevotos += 1;
+		 this.clasificacion.add(clasif);
 	 }
 	 
 	 
