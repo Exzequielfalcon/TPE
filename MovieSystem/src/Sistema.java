@@ -15,7 +15,10 @@ public class Sistema {
 	public void Agregargrupo(Grupo g) {
 		this.grupos.add(g);
 	}
-	public void VerPelicula(Usuario u, double clasif) {
+	public void VerPelicula(Usuario u,Pelicula p, int clasif) {
+		u.VerPelicula(p);
+		u.ClasificarPeli(p, clasif);
+		
 		
 	}
 
