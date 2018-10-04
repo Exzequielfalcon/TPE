@@ -50,6 +50,7 @@ public class Grupo {
 		p.setClasificacion(clasificacion);
 	}
 	
+	/*
 	public ArrayList<Pelicula> getPelisVistas(){
 		ArrayList<Pelicula> aux = new ArrayList();
 		aux.addAll(pelisvistas);
@@ -63,5 +64,13 @@ public class Grupo {
 		
 		return aux;
 	}
+	*/
+	
+	public ArrayList<Pelicula> getPelisVistas(){
+		ArrayList<Pelicula> aux = new ArrayList();
+		aux.addAll(pelisvistas);
+		return aux;
+	}
+	
 	
 }
