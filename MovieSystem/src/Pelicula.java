@@ -1,15 +1,15 @@
 import java.util.ArrayList;
 
 public class Pelicula {
-	String titulo;
-	String sinopsis;
-	ArrayList<String>actoresprotagónicos = new ArrayList<>();
-	ArrayList<String>directores = new ArrayList<>();
-	int duración;
-	ArrayList<String>categorias = new ArrayList<>();
-	int añoestreno;
-	int clasificacion;
-	int cantidaddevotos;
+	private String titulo;
+	private String sinopsis;
+	private ArrayList<String>actoresprotagónicos = new ArrayList<>();
+	private ArrayList<String>directores = new ArrayList<>();
+	private int duración;
+	private ArrayList<String>categorias = new ArrayList<>();
+	private int añoestreno;
+	private int clasificacion;
+	private int cantidaddevotos;
 	
 	public Pelicula(String titulo, String sinopsis, int duración, int añoestreno) {
 		this.titulo = titulo;
