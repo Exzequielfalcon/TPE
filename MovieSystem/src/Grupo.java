@@ -16,6 +16,10 @@ public class Grupo {
 		this.usuarios.addAll(c.getUsuarios());
 	}
 	
+	public void Añadirusuario(Usuario u) {
+		this.usuarios.add(u);
+	}
+	
 	public ArrayList<Usuario> getUsuarios() {
 		ArrayList<Usuario> aux = new ArrayList();
 		aux.addAll(usuarios);
