@@ -18,6 +18,16 @@ public class Pelicula {
 
 	}
 	
+	public boolean equals (Object o) {
+		if (o instanceof Pelicula) {
+			Pelicula temp=(Pelicula) o;
+			if (this.titulo.equals(temp.getTitulo())) {
+				return true;
+			}
+			else return false;
+		}
+		else return false;
+	}
 	
 	public double getClasificacion() {
 		int cantidaddevotos = clasificacion.size();
