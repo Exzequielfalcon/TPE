@@ -28,10 +28,6 @@ public class Usuario {
 	public String getNombre() {
 		return nombre;
 	}
-
-	public int getEdad() {
-		return edad;
-	}
 	
 	public ArrayList<Pelicula> getPelisVistas() {
 		ArrayList<Pelicula> aux = new ArrayList();
@@ -43,6 +39,12 @@ public class Usuario {
 		if(!(generosfav.contains(genero))) {
 			generosfav.add(genero);
 		}
+	}
+	
+	public ArrayList<String> getGeneros() {
+		ArrayList<String> aux= new ArrayList();
+		aux.addAll(generosfav);
+		return aux;
 	}
 	
 }
