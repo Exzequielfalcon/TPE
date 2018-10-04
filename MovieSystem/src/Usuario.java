@@ -41,6 +41,12 @@ public class Usuario {
 		}
 	}
 	
+	public ArrayList<String> getGeneros() {
+		ArrayList<String> aux= new ArrayList();
+		aux.addAll(generosfav);
+		return aux;
+	}
+	
 	public boolean equals (Object o) {
 		if (o instanceof Usuario) {
 			Usuario temp=(Usuario) o;
@@ -51,11 +57,4 @@ public class Usuario {
 		}
 		else return false;
 	}
-	
-	public ArrayList<String> getGeneros() {
-		ArrayList<String> aux= new ArrayList();
-		aux.addAll(generosfav);
-		return aux;
-	}
-	
 }
