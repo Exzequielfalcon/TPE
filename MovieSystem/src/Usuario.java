@@ -41,6 +41,17 @@ public class Usuario {
 		}
 	}
 	
+	public boolean equals (Object o) {
+		if (o instanceof Usuario) {
+			Usuario temp=(Usuario) o;
+			if (this.nombre.equals(temp.getNombre())&&(this.generosfav.equals(temp.getGeneros()))) {
+				return true;
+			}
+			else return false;
+		}
+		else return false;
+	}
+	
 	public ArrayList<String> getGeneros() {
 		ArrayList<String> aux= new ArrayList();
 		aux.addAll(generosfav);
