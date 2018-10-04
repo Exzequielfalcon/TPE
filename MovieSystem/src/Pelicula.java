@@ -40,11 +40,11 @@ public class Pelicula {
 		this.directores.add(d);
 	}
 	
-	 public int Getaño() {
+	 public int getAño() {
 		 return this.añoestreno;
 	 }
 	 
-	 public String Gettitulo() {
+	 public String getTitulo() {
 		 return this.titulo;
 	 }
 	 
@@ -52,11 +52,11 @@ public class Pelicula {
 		 return categorias.contains(cat);
 	 }
 	 
-	 public int Getcantdevotos() {
+	 public int getCantdevotos() {
 		 return this.clasificacion.size();
 	 }
 	 
-	 public void Setclasificacion(int clasif){
+	 public void setClasificacion(int clasif){
 		 this.clasificacion.add(clasif);
 	 }
 	 
