@@ -39,15 +39,21 @@ public class Pelicula {
 	}
 	
 	public void Añadircategoria(String c) {
-		this.categorias.add(c);
+		if(!(this.categorias.contains(c))) {
+			this.categorias.add(c);
+		}
 	}
 	
 	public void Añadiractoresprotagonicos (String a) {
-		this.actoresprotagónicos.add(a);
+		if(!(this.actoresprotagónicos.contains(a))) {
+			this.actoresprotagónicos.add(a);
+		}
 	}
 	
 	public void Añadirdirectores (String d) {
-		this.directores.add(d);
+		if(!(this.directores.contains(d))) {
+			this.directores.add(d);
+		}
 	}
 	
 	 public int getAño() {
