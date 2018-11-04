@@ -1,11 +1,9 @@
 import java.util.ArrayList;
+import java.util.List;
 
-public class Usuario {
-	private String nombre;
+public class Usuario extends User{
 	private int edad;
-	private ArrayList<String> generosfav = new ArrayList();  //Generos favoritos
-	private ArrayList<Pelicula> pelisvistas =new ArrayList(); //Peliculas Vistas
-	
+
 	public Usuario(String nombre, int edad, String generofavorito) {
 		this.nombre = nombre;
 		this.edad = edad;
@@ -18,7 +16,7 @@ public class Usuario {
 	}
 	
 	public void ClasificarPeli(Pelicula p, int clasificacion) {
-		p.setClasificacion(clasificacion);
+		p.setClasificacion(this, clasificacion);
 	}
 	
 	public void VerPelicula(Pelicula p) {
@@ -57,4 +55,7 @@ public class Usuario {
 		}
 		else return false;
 	}
+
+	
+	
 }

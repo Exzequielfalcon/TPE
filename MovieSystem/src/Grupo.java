@@ -1,10 +1,8 @@
 import java.util.ArrayList;
+import java.util.List;
 
-public class Grupo {
-	private String nombre;
+public class Grupo extends User {
 	private ArrayList<Usuario> usuarios;
-	private ArrayList<String> generosfav = new ArrayList();  //Generos favoritos
-	private ArrayList<Pelicula> pelisvistas =new ArrayList(); //Peliculas Vistas
 	
 	public void Grupo(String nombre,Usuario miembro) {
 		this.nombre= nombre;
@@ -47,7 +45,10 @@ public class Grupo {
 	}
 	
 	public void ClasificarPeli(Pelicula p, int clasificacion) {
-		p.setClasificacion(clasificacion);
+		for (int i=0;i<usuarios.size();i++) {
+			p.setClasificacion(usuarios.get(i),clasificacion);
+		}
+		
 	}
 	
 	/*

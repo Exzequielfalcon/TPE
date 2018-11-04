@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Hashtable;
 
 public class Pelicula {
 	private String titulo;
@@ -8,18 +9,17 @@ public class Pelicula {
 	private int duración;
 	private ArrayList<String>categorias = new ArrayList<>();
 	private int añoestreno;
-	private ArrayList<Integer> clasificacion = new ArrayList<>();
+	private Hashtable<Usuario, Integer> clasificacion = new Hashtable();
 	
 	public Pelicula(String titulo, String sinopsis, int duración, int añoestreno) {
 		this.titulo = titulo;
 		this.sinopsis = sinopsis;
 		this.duración = duración;
 		this.añoestreno = añoestreno;
-
 	}
 	
 
-	public double getClasificacion() {
+	public double getClasificacion() {			// REHACER
 		int cantidaddevotos = clasificacion.size();
 		int auxsuma = 0;
 		for (int i=0; i<clasificacion.size();i++) {
@@ -58,14 +58,15 @@ public class Pelicula {
 		 return categorias.contains(cat);
 	 }
 	 
-	 public int getCantdevotos() {
+	 public int getCantdevotos() {				//VER
 		 return this.clasificacion.size();
 	 }
 	 
-	 public void setClasificacion(int clasif){
-		 this.clasificacion.add(clasif);
+	 public void setClasificacion(Usuario usuario, int clasif){
+		 this.clasificacion.put(usuario, clasif);
 	 }
-		public boolean equals (Object o) {
+	 
+	public boolean equals (Object o) {
 			if (o instanceof Pelicula) {
 				Pelicula temp=(Pelicula) o;
 				if (this.titulo.equals(temp.getTitulo())) {
