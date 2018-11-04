@@ -8,4 +8,6 @@ public abstract class User {
 	
 	public abstract List getGeneros();
 	public abstract void ClasificarPeli(Pelicula p, int clasificacion);
+	public abstract void VerPelicula(Pelicula p);
+	public abstract List getPelisVistas();
 }

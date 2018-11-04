@@ -27,7 +27,7 @@ public class Usuario extends User{
 		return nombre;
 	}
 	
-	public ArrayList<Pelicula> getPelisVistas() {
+	public List<Pelicula> getPelisVistas() {
 		ArrayList<Pelicula> aux = new ArrayList();
 		aux.addAll(pelisvistas);
 		return aux;
@@ -39,7 +39,7 @@ public class Usuario extends User{
 		}
 	}
 	
-	public ArrayList<String> getGeneros() {
+	public List<String> getGeneros() {
 		ArrayList<String> aux= new ArrayList();
 		aux.addAll(generosfav);
 		return aux;

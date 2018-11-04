@@ -18,7 +18,7 @@ public class Grupo extends User {
 		this.usuarios.add(u);
 	}
 	
-	public ArrayList<Usuario> getUsuarios() {
+	public List<Usuario> getUsuarios() {
 		ArrayList<Usuario> aux = new ArrayList();
 		aux.addAll(usuarios);
 		return aux;
@@ -31,7 +31,7 @@ public class Grupo extends User {
 		}
 	}
 	
-	public ArrayList<String> getGeneros(){
+	public List<String> getGeneros(){
 		ArrayList<String> aux = new ArrayList();
 		for (int i=0;i<usuarios.size();i++) {
 			for(int j=0;j<usuarios.get(i).getGeneros().size();j++) {
@@ -67,7 +67,7 @@ public class Grupo extends User {
 	}
 	*/
 	
-	public ArrayList<Pelicula> getPelisVistas(){
+	public List<Pelicula> getPelisVistas(){
 		ArrayList<Pelicula> aux = new ArrayList();
 		aux.addAll(pelisvistas);
 		return aux;
