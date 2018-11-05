@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 public class Usuario extends User{
@@ -27,20 +28,18 @@ public class Usuario extends User{
 		return nombre;
 	}
 	
-	public List<Pelicula> getPelisVistas() {
-		ArrayList<Pelicula> aux = new ArrayList();
-		aux.addAll(pelisvistas);
-		return aux;
+	public Iterator getPelisVistas() {
+		return this.pelisvistas.iterator();
 	}
 	
-	public void AddGeneroFavorito (String genero) {
+	public void addGeneroFavorito (String genero) {
 		if(!(generosfav.contains(genero))) {
 			generosfav.add(genero);
 		}
 	}
 	
-	public List<String> getGeneros() {
-		ArrayList<String> aux= new ArrayList();
+	public List<String> getGeneros() {					//Esta mal
+		ArrayList<String> aux= new ArrayList();	
 		aux.addAll(generosfav);
 		return aux;
 	}

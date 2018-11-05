@@ -1,15 +1,16 @@
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 public class Grupo extends User {
 	private ArrayList<Usuario> usuarios;
 	
-	public void Grupo(String nombre,Usuario miembro) {
+	public Grupo(String nombre,Usuario miembro) {
 		this.nombre= nombre;
 		this.usuarios.add(miembro);
 	}
 	
-	public void Grupo(String nombre, Grupo c) {
+	public Grupo(String nombre, Grupo c) {
 		this.nombre = nombre;
 		this.usuarios.addAll(c.getUsuarios());
 	}
@@ -31,7 +32,7 @@ public class Grupo extends User {
 		}
 	}
 	
-	public List<String> getGeneros(){
+	public Iterator getGeneros(){
 		ArrayList<String> aux = new ArrayList();
 		for (int i=0;i<usuarios.size();i++) {
 			for(int j=0;j<usuarios.get(i).getGeneros().size();j++) {
@@ -39,16 +40,15 @@ public class Grupo extends User {
 					aux.add(usuarios.get(i).getGeneros().get(j));
 				}
 			}
-			
 		}
-		return aux;
+		return aux.iterator();
 	}
 	
 	public void ClasificarPeli(Pelicula p, int clasificacion) {
-		for (int i=0;i<usuarios.size();i++) {
-			p.setClasificacion(usuarios.get(i),clasificacion);
-		}
-		
+//		for (int i=0;i<usuarios.size();i++) {
+//			p.setClasificacion(usuarios.get(i),clasificacion);
+//		}
+		p.setClasificacion(this, clasificacion);
 	}
 	
 	/*
@@ -67,10 +67,8 @@ public class Grupo extends User {
 	}
 	*/
 	
-	public List<Pelicula> getPelisVistas(){
-		ArrayList<Pelicula> aux = new ArrayList();
-		aux.addAll(pelisvistas);
-		return aux;
+	public Iterator getPelisVistas(){
+		return this.pelisvistas.iterator();
 	}
 	
 	

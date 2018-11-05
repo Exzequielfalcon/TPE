@@ -1,21 +1,25 @@
 import java.util.ArrayList;
+import java.util.HashSet;
 
 public class Sistema {
-	private ArrayList<Pelicula> peliculas = new ArrayList<>();
-	private ArrayList<Usuario> usuarios = new ArrayList<>();
-	private ArrayList<Grupo> grupos= new ArrayList<>();
+	private HashSet<Pelicula> peliculas = new HashSet<>();
+	private ArrayList<User> usuarios = new ArrayList<>();
 	
 	
-	public void Agregarusuario(Usuario u) {
+	public void addUsuario(Usuario u) {
 		this.usuarios.add(u);
 	}
 	
-	public void Agregarpelicula(Pelicula p) {
+	public void addPelicula(Pelicula p) {
 		this.peliculas.add(p);
 	}
 	
-	public void Agregargrupo(Grupo g) {
-		this.grupos.add(g);
+	public void addGrupo(Grupo g) {
+		this.usuarios.add(g);
+	}
+	
+	public void addUser(Usuario u) {
+		this.usuarios.add(u);
 	}
 	
 	public void VerPelicula(Usuario u,Pelicula p, int clasif) {
@@ -23,16 +27,16 @@ public class Sistema {
 		u.ClasificarPeli(p, clasif);
 	}
 	
-	public ArrayList<Pelicula> RecomendarPeli(Usuario u){
-		ArrayList<Pelicula> aux = new ArrayList<>();
-		return aux;
-	}
-	
-	public ArrayList<Pelicula> RecomendarPeliGrupo(Grupo g){
-		ArrayList<Pelicula> aux = new ArrayList<>();
-		return aux;
-	}
-	
+//	public ArrayList<Pelicula> RecomendarPeli(Usuario u){
+//		ArrayList<Pelicula> aux = new ArrayList<>();
+//		return aux;
+//	}
+//	
+//	public ArrayList<Pelicula> RecomendarPeliGrupo(Grupo g){			//MAL
+//		ArrayList<Pelicula> aux = new ArrayList<>();
+//		return aux;
+//	}
+//	
 	public int CantidadVotos(Pelicula p) {
 		return p.getCantdevotos();
 	}

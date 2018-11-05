@@ -9,7 +9,7 @@ public class Pelicula {
 	private int duración;
 	private ArrayList<String>categorias = new ArrayList<>();
 	private int añoestreno;
-	private Hashtable<Usuario, Integer> clasificacion = new Hashtable();
+	private Hashtable<User, Integer> clasificacion = new Hashtable();
 	
 	public Pelicula(String titulo, String sinopsis, int duración, int añoestreno) {
 		this.titulo = titulo;
@@ -62,7 +62,7 @@ public class Pelicula {
 		 return this.clasificacion.size();
 	 }
 	 
-	 public void setClasificacion(Usuario usuario, int clasif){
+	 public void setClasificacion(User usuario, int clasif){
 		 this.clasificacion.put(usuario, clasif);
 	 }
 	 
