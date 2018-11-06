@@ -3,7 +3,10 @@ import java.util.HashSet;
 
 public class Sistema {
 	private HashSet<Pelicula> peliculas = new HashSet<>();
-	private ArrayList<User> usuarios = new ArrayList<>();
+	private HashSet<User> usuarios = new HashSet<>();
+	
+	public Sistema() {
+	}
 	
 	
 	public void addUsuario(Usuario u) {

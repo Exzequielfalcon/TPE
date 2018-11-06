@@ -1,53 +1,55 @@
 import java.util.ArrayList;
-import java.util.Hashtable;
+import java.util.HashMap;
+import java.util.Map.Entry;
 
 public class Pelicula {
 	private String titulo;
 	private String sinopsis;
-	private ArrayList<String>actoresprotagónicos = new ArrayList<>();
+	private ArrayList<String>actoresprotagonicos = new ArrayList<>();
 	private ArrayList<String>directores = new ArrayList<>();
-	private int duración;
+	private int duracion;
 	private ArrayList<String>categorias = new ArrayList<>();
-	private int añoestreno;
-	private Hashtable<User, Integer> clasificacion = new Hashtable();
+	private int aÃ±oestreno;
+	private HashMap<User, Integer> clasificacion = new HashMap<User,Integer>();
 	
-	public Pelicula(String titulo, String sinopsis, int duración, int añoestreno) {
+	public Pelicula(String titulo, String sinopsis, int duracion, int aÃ±oestreno) {
 		this.titulo = titulo;
 		this.sinopsis = sinopsis;
-		this.duración = duración;
-		this.añoestreno = añoestreno;
+		this.duracion = duracion;
+		this.aÃ±oestreno = aÃ±oestreno;
 	}
 	
 
-	public double getClasificacion() {			// REHACER
+	public double getClasificacion() {
 		int cantidaddevotos = clasificacion.size();
-		int auxsuma = 0;
-		for (int i=0; i<clasificacion.size();i++) {
-			auxsuma +=this.clasificacion.get(i);
+		int auxsuma=0;
+		for(Entry<User, Integer> entry : this.clasificacion.entrySet()) {
+		    Integer value = entry.getValue();
+		    auxsuma+=value;
 		}
 		return auxsuma/cantidaddevotos;
 	}
 	
-	public void Añadircategoria(String c) {
+	public void addCategoria(String c) {
 		if(!(this.categorias.contains(c))) {
 			this.categorias.add(c);
 		}
 	}
 	
-	public void Añadiractoresprotagonicos (String a) {
-		if(!(this.actoresprotagónicos.contains(a))) {
-			this.actoresprotagónicos.add(a);
+	public void addActores (String a) {
+		if(!(this.actoresprotagonicos.contains(a))) {
+			this.actoresprotagonicos.add(a);
 		}
 	}
 	
-	public void Añadirdirectores (String d) {
+	public void addDirector (String d) {
 		if(!(this.directores.contains(d))) {
 			this.directores.add(d);
 		}
 	}
 	
-	 public int getAño() {
-		 return this.añoestreno;
+	 public int getAÃ±o() {
+		 return this.aÃ±oestreno;
 	 }
 	 
 	 public String getTitulo() {
@@ -63,16 +65,14 @@ public class Pelicula {
 	 }
 	 
 	 public void setClasificacion(User usuario, int clasif){
+		 
 		 this.clasificacion.put(usuario, clasif);
 	 }
 	 
 	public boolean equals (Object o) {
 			if (o instanceof Pelicula) {
 				Pelicula temp=(Pelicula) o;
-				if (this.titulo.equals(temp.getTitulo())) {
-					return true;
-				}
-				else return false;
+				return this.titulo.equals(temp.getTitulo());
 			}
 			else return false;
 		}

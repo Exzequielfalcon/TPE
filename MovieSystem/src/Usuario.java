@@ -28,7 +28,7 @@ public class Usuario extends User{
 		return nombre;
 	}
 	
-	public Iterator getPelisVistas() {
+	public Iterator<Pelicula> getPelisVistas() {
 		return this.pelisvistas.iterator();
 	}
 	
@@ -38,16 +38,14 @@ public class Usuario extends User{
 		}
 	}
 	
-	public List<String> getGeneros() {					//Esta mal
-		ArrayList<String> aux= new ArrayList();	
-		aux.addAll(generosfav);
-		return aux;
+	public Iterator<String> getGeneros() {				
+		return this.generosfav.iterator();
 	}
 	
 	public boolean equals (Object o) {
 		if (o instanceof Usuario) {
 			Usuario temp=(Usuario) o;
-			if (this.nombre.equals(temp.getNombre())&&(this.generosfav.equals(temp.getGeneros()))) {
+			if (this.nombre.equals(temp.getNombre())) {
 				return true;
 			}
 			else return false;

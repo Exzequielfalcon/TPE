@@ -1,44 +1,34 @@
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 
 public class Grupo extends User {
-	private ArrayList<Usuario> usuarios;
+	private HashSet<User> usuarios = new HashSet<User>();
 	
-	public Grupo(String nombre,Usuario miembro) {
+	public Grupo(String nombre,User miembro) {
 		this.nombre= nombre;
 		this.usuarios.add(miembro);
 	}
+
 	
-	public Grupo(String nombre, Grupo c) {
-		this.nombre = nombre;
-		this.usuarios.addAll(c.getUsuarios());
-	}
-	
-	public void Añadirusuario(Usuario u) {
+	public void addUser(Usuario u) {
 		this.usuarios.add(u);
-	}
-	
-	public List<Usuario> getUsuarios() {
-		ArrayList<Usuario> aux = new ArrayList();
-		aux.addAll(usuarios);
-		return aux;
 	}
 	
 	public void VerPelicula(Pelicula p) {
 		pelisvistas.add(p);
-		for(int i=0;i<usuarios.size();i++) {
-			usuarios.get(i).VerPelicula(p);
+		for (User i : usuarios) { 
+			i.VerPelicula(p);
 		}
 	}
 	
-	public Iterator getGeneros(){
-		ArrayList<String> aux = new ArrayList();
-		for (int i=0;i<usuarios.size();i++) {
-			for(int j=0;j<usuarios.get(i).getGeneros().size();j++) {
-				if(!(aux.contains(usuarios.get(i).getGeneros().get(j)))) {
-					aux.add(usuarios.get(i).getGeneros().get(j));
-				}
+	public Iterator<String> getGeneros(){
+		HashSet<String> aux = new HashSet<>();
+		for (User i : usuarios) { 
+			Iterator<String> generos = i.getGeneros();
+			while(generos.hasNext()) {
+				aux.add(generos.next());
 			}
 		}
 		return aux.iterator();
@@ -67,7 +57,7 @@ public class Grupo extends User {
 	}
 	*/
 	
-	public Iterator getPelisVistas(){
+	public Iterator<Pelicula> getPelisVistas(){
 		return this.pelisvistas.iterator();
 	}
 	
