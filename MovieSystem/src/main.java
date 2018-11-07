@@ -1,18 +1,172 @@
+
 import java.util.Iterator;
+
+import peliculas.Pelicula;
+import users.Grupo;
+import users.Usuario;
 
 public class main {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		Sistema c = new Sistema();
-		Usuario h = new Usuario("kilo", 9, "asd");
-		Grupo d = new Grupo("Loschevis", new Usuario("kilo", 9, "asd"));
-		d.addUser(new Usuario("juan", 8, "Tu hermana"));
-		d.addUser(new Usuario("uan", 8, "Tu hermana"));
-		Iterator<String> it = d.getGeneros();
-		while (it.hasNext()) {
-			System.out.println(it.next());
+		
+		//USUARIOS
+		
+		Usuario Lisa = new Usuario("Lisa", 8);
+		Lisa.addGeneroFavorito("Romántico");
+		Lisa.addGeneroFavorito("Musical");
+		Lisa.addGeneroFavorito("Infantil");
+		Lisa.addGeneroFavorito("Aventura");
+
+		Iterator<String> listaGeneros = Lisa.getGeneros();
+		System.out.println("GENEROS LISA\n");
+		
+		while(listaGeneros.hasNext()) {
+			System.out.println(listaGeneros.next());
 		}
+		
+		System.out.println("-----------------------");
+		
+		Usuario Bart = new Usuario("Bart", 10);
+		Bart.addGeneroFavorito("Musical");
+		Bart.addGeneroFavorito("Aventura");
+		Bart.addGeneroFavorito("Infantil");
+		Bart.addGeneroFavorito("Acción");
+		
+		Usuario Maggie = new Usuario("Maggie", 1);
+		Maggie.addGeneroFavorito("Musical");
+		Maggie.addGeneroFavorito("Aventura");
+		Maggie.addGeneroFavorito("Infantil");
+		
+		Usuario Marge = new Usuario("Marge", 30);
+		Marge.addGeneroFavorito("Musical");
+		Marge.addGeneroFavorito("Aventura");
+		Marge.addGeneroFavorito("Infantil");
+		Marge.addGeneroFavorito("Romántico");
+		
+		Usuario Homero = new Usuario("Homero", 31);
+		Homero.addGeneroFavorito("Musical");
+		Homero.addGeneroFavorito("Acción");
+		Homero.addGeneroFavorito("Infantil");
+		
+		//GRUPO DE USUARIOS
+		Grupo HombresSimpson = new Grupo("Hombres Simpson", Bart);
+		HombresSimpson.addUser(Homero);
+		
+		Grupo HermanosSimpson = new Grupo("Hermanos Simpson", Lisa);
+		HermanosSimpson.addUser(Bart);
+		HermanosSimpson.addUser(Maggie);
+		
+		Grupo Familia = new Grupo("Familia Simpson", HermanosSimpson);
+		Familia.addUser(Homero);
+		Familia.addUser(Marge);
+		
+		System.out.println("HOMBRES SIMPSON GENEROS\n");
+		listaGeneros = HombresSimpson.getGeneros();
+		while(listaGeneros.hasNext()) {
+			System.out.println(listaGeneros.next());
+		}
+		
+		System.out.println("-------------------------");
+		
+		Pelicula p1 = new Pelicula("Up : una aventura en la altura","Carl Fredricksen es un vendedor de globos de 78 años de edad dispuesto a cumplir su sueño: atar miles de globos a su casa y volar a Sudamérica. Sin embargo, descubre demasiado tarde a un joven e inesperado polizón. "
+				+ "Lo que en principio será recelo, acabará por tornarse simpatía hacia el muchacho mientras juntos pasan fascinantes aventuras en exóticos lugares.",1.4,2009);
+		p1.addDirector("Pete Docter");
+		p1.addDirector("Bob Peterson");
+		p1.addActor("Pete Docter");
+		p1.addActor("Ed Asner");
+		p1.addActor("Bob Peterson");
+		p1.addActor("Jordan Nagai");
+		p1.addGenero("Infantil");
+		p1.addGenero("Accion");
+		p1.addGenero("Drama");
+
+
+		Pelicula p2 = new Pelicula(" Los Simpson"," la película La combinación de Homero (Dan Castellaneta), su nuevo puerco mascota, "
+				+ "y un silo lleno de excremento podrían provocar un desastre que amenace no sólo a Springfield, sino al mundo entero. Una muchedumbre enojada llega a la casa de los Simpson,"
+				+ " dividiendo a la familia. Con el destino de la Tierra en equilibrio, Homero se prepara para intentar redimirse con la intención de salvar al mundo y ganarse el perdón de Marge (Julie Kavner).",
+				2.0, 2007);
+		
+		p2.addDirector("David Silverman");
+		p2.addActor("Dan Castellaneta");
+		p2.addActor("Harry Shearer");
+		p2.addActor("Julie Kavner");
+		p2.addGenero("Romantico");
+		p2.addGenero("Musical");
+		p2.addGenero("Infantil");
+		p2.addGenero("Aventura");
+		p2.addGenero("Comedia");
+		
+		Pelicula p3 = new Pelicula("Los Increibles","Un súper héroe retirado lucha contra el aburrimiento en un suburbio y junto con su familia tiene la oportunidad de salvar al mundo.\r\n"
+				,2.0, 2004);
+		
+		p3.addDirector("Brad Bird");
+		p3.addActor("Brad Bird");
+		p3.addActor("Craig T. Nelson");
+		p3.addActor("Holly Hunter");
+		p3.addGenero("Musical");
+		p3.addGenero("Infantil");
+		p3.addGenero("Aventura");
+		p3.addGenero("Accion");
+		
+		Pelicula p4 = new Pelicula("Los Increibles 2"," Helen entra en acción y debe luchar contra un cibercriminal que planea hipnotizar el mundo a través de las pantallas de las computadoras. Eso deja al Sr. Increíble con uno de sus mayores desafíos: quedarse en casa y cuidar de tres niños traviesos.\r\n"
+				,2.0, 2018);
+		
+		p4.addDirector("Brad Bird");
+		p4.addActor("Brad Bird");
+		p4.addActor("Craig T. Nelson");
+		p4.addActor("Holly Hunter");
+		p4.addGenero("Musical");
+		p4.addGenero("Infantil");
+		p4.addGenero("Aventura");
+		p4.addGenero("Accion");
+		
+		
+		Pelicula p5 = new Pelicula("Toy Story","Lo mejor de la animación computarizada produce esta historia sobre juguetes que cobran vida cuando su dueño se ausenta.",
+				2.0, 1995);
+		
+		p5.addDirector("John Lasseter");
+		p5.addActor("Tim Allen");
+		p5.addActor("Tom Hanks");
+		p5.addActor("Don Rickles");
+		p5.addActor("Wallace Shawn");
+		p5.addGenero("Infantil");
+		p5.addGenero("Aventura");
+		p5.addGenero("Accion");
+		
+		Pelicula p6 = new Pelicula("Monsters Inc.","Monsters, Incorporated es la fábrica de sustos más grande en el mundo de los"
+				+ " monstruos y James P. Sullivan (John Goodman) es uno de sus mejores asustadores. Sullivan es un monstruo "
+				+ "grande e intimidante de piel azul, grandes manchas color púrpura y cuernos. Su asistente, mejor amigo y "
+				+ "compañero de cuarto es Mike Wazowski (Billy Crystal), un pequeño y alegre monstruo verde con un solo ojo."
+				+ " Boo (Mary Gibbs), una niña pequeña visita lugares en donde nunca antes había estado un ser humano.\r\n"
+				,2.0, 2001);
+		
+		p6.addDirector("Pete Docter");
+		p6.addActor("John Goodman");
+		p6.addActor("Billy Crystal");
+		p6.addActor("John Ratzenberger");
+		p6.addGenero("Infantil");
+		p6.addGenero("Musical");
+		p6.addGenero("Aventura");
+		p6.addGenero("Accion");
+		
+		Bart.verPelicula(p1);
+		Lisa.setMovieRate(p2,5);
+		Bart.setMovieRate(p3, 2);
+		Homero.setMovieRate(p3, 4);
+		Marge.setMovieRate(p3, 2);
+		Marge.setMovieRate(p4, 5);
+		Maggie.setMovieRate(p5, 1);
+		
+		System.out.println(p3.getClasificacion());
+		
+		Iterator <Pelicula> itPelicula = HombresSimpson.getPelisVistas();
+		
+		System.out.println("VISTAS HOMBRESIMPSON");
+		while(itPelicula.hasNext()) {
+			System.out.println(itPelicula.next().getTitulo());
+		}
+		
 	}
 
 }

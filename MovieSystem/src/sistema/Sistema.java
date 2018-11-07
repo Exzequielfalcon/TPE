@@ -1,5 +1,11 @@
+package sistema;
 import java.util.ArrayList;
 import java.util.HashSet;
+
+import peliculas.Pelicula;
+import users.Grupo;
+import users.User;
+import users.Usuario;
 
 public class Sistema {
 	private HashSet<Pelicula> peliculas = new HashSet<>();
@@ -25,9 +31,9 @@ public class Sistema {
 		this.usuarios.add(u);
 	}
 	
-	public void VerPelicula(Usuario u,Pelicula p, int clasif) {
-		u.VerPelicula(p);
-		u.ClasificarPeli(p, clasif);
+	public void verPelicula(Usuario u,Pelicula p, int clasif) {
+		u.verPelicula(p);
+		u.setMovieRate(p, clasif);
 	}
 	
 //	public ArrayList<Pelicula> RecomendarPeli(Usuario u){

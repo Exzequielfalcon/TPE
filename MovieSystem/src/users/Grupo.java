@@ -1,7 +1,10 @@
+package users;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
+
+import peliculas.Pelicula;
 
 public class Grupo extends User {
 	private HashSet<User> usuarios = new HashSet<User>();
@@ -16,10 +19,10 @@ public class Grupo extends User {
 		this.usuarios.add(u);
 	}
 	
-	public void VerPelicula(Pelicula p) {
+	public void verPelicula(Pelicula p) {
 		pelisvistas.add(p);
 		for (User i : usuarios) { 
-			i.VerPelicula(p);
+			i.verPelicula(p);
 		}
 	}
 	
@@ -34,31 +37,20 @@ public class Grupo extends User {
 		return aux.iterator();
 	}
 	
-	public void ClasificarPeli(Pelicula p, int clasificacion) {
-//		for (int i=0;i<usuarios.size();i++) {
-//			p.setClasificacion(usuarios.get(i),clasificacion);
-//		}
+	public void setMovieRate(Pelicula p, int clasificacion) {
 		p.setClasificacion(this, clasificacion);
 	}
 	
-	/*
-	public ArrayList<Pelicula> getPelisVistas(){
-		ArrayList<Pelicula> aux = new ArrayList();
-		aux.addAll(pelisvistas);
-		for (int i=0;i<usuarios.size();i++) {
-			for (int j=0;j<usuarios.get(i).getPelisVistas().size();j++) {
-				if (!(aux.contains(usuarios.get(i).getPelisVistas().get(j)))) {
-					aux.add(usuarios.get(i).getPelisVistas().get(j));
-				}
-			}
-		}
-		
-		return aux;
-	}
-	*/
 	
 	public Iterator<Pelicula> getPelisVistas(){
-		return this.pelisvistas.iterator();
+		HashSet<Pelicula> aux = new HashSet<>();
+		for (User i : usuarios) { 
+			Iterator<Pelicula> pelis = i.getPelisVistas();
+			while(pelis.hasNext()) {
+				aux.add(pelis.next());
+			}
+		}
+		return aux.iterator();
 	}
 	
 	

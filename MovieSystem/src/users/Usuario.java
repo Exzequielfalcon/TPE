@@ -1,6 +1,9 @@
+package users;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+
+import peliculas.Pelicula;
 
 public class Usuario extends User{
 	private int edad;
@@ -16,11 +19,11 @@ public class Usuario extends User{
 		this.edad = edad;
 	}
 	
-	public void ClasificarPeli(Pelicula p, int clasificacion) {
+	public void setMovieRate(Pelicula p, int clasificacion) {
 		p.setClasificacion(this, clasificacion);
 	}
 	
-	public void VerPelicula(Pelicula p) {
+	public void verPelicula(Pelicula p) {
 		pelisvistas.add(p);
 	}
 

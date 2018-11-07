@@ -1,42 +1,45 @@
+package peliculas;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map.Entry;
+
+import users.User;
 
 public class Pelicula {
 	private String titulo;
 	private String sinopsis;
 	private ArrayList<String>actoresprotagonicos = new ArrayList<>();
 	private ArrayList<String>directores = new ArrayList<>();
-	private int duracion;
-	private ArrayList<String>categorias = new ArrayList<>();
-	private int aÃ±oestreno;
+	private double duracion;
+	private ArrayList<String>genero = new ArrayList<>();
+	private int añoestreno;
 	private HashMap<User, Integer> clasificacion = new HashMap<User,Integer>();
 	
-	public Pelicula(String titulo, String sinopsis, int duracion, int aÃ±oestreno) {
+	public Pelicula(String titulo, String sinopsis, double duracion, int añoestreno) {
 		this.titulo = titulo;
 		this.sinopsis = sinopsis;
 		this.duracion = duracion;
-		this.aÃ±oestreno = aÃ±oestreno;
+		this.añoestreno = añoestreno;
 	}
 	
 
 	public double getClasificacion() {
 		int cantidaddevotos = clasificacion.size();
-		int auxsuma=0;
+		double auxsuma=0;
 		for(Entry<User, Integer> entry : this.clasificacion.entrySet()) {
-		    Integer value = entry.getValue();
+		    double value = entry.getValue();
 		    auxsuma+=value;
 		}
 		return auxsuma/cantidaddevotos;
 	}
 	
-	public void addCategoria(String c) {
-		if(!(this.categorias.contains(c))) {
-			this.categorias.add(c);
+	public void addGenero(String c) {
+		if(!(this.genero.contains(c))) {
+			this.genero.add(c);
 		}
 	}
 	
-	public void addActores (String a) {
+	public void addActor (String a) {
 		if(!(this.actoresprotagonicos.contains(a))) {
 			this.actoresprotagonicos.add(a);
 		}
@@ -48,8 +51,8 @@ public class Pelicula {
 		}
 	}
 	
-	 public int getAÃ±o() {
-		 return this.aÃ±oestreno;
+	 public int getAño() {
+		 return this.añoestreno;
 	 }
 	 
 	 public String getTitulo() {
@@ -57,7 +60,7 @@ public class Pelicula {
 	 }
 	 
 	 boolean Pertenececategoria(String cat) {
-		 return categorias.contains(cat);
+		 return genero.contains(cat);
 	 }
 	 
 	 public int getCantdevotos() {				//VER
@@ -65,7 +68,12 @@ public class Pelicula {
 	 }
 	 
 	 public void setClasificacion(User usuario, int clasif){
-		 
+		 if (clasif<1) {
+			 clasif=1;
+		 }
+		 if (clasif>5) {
+			 clasif=5;
+		 }
 		 this.clasificacion.put(usuario, clasif);
 	 }
 	 
