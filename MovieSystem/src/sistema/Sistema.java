@@ -1,7 +1,12 @@
 package sistema;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashSet;
+import java.util.Iterator;
 
+import Comparators.Compara;
+import Comparators.ComparaPromedio;
+import Condiciones.Condicion;
 import peliculas.Pelicula;
 import users.Grupo;
 import users.User;
@@ -36,16 +41,6 @@ public class Sistema {
 		u.setMovieRate(p, clasif);
 	}
 	
-//	public ArrayList<Pelicula> RecomendarPeli(Usuario u){
-//		ArrayList<Pelicula> aux = new ArrayList<>();
-//		return aux;
-//	}
-//	
-//	public ArrayList<Pelicula> RecomendarPeliGrupo(Grupo g){			//MAL
-//		ArrayList<Pelicula> aux = new ArrayList<>();
-//		return aux;
-//	}
-//	
 	public int CantidadVotos(Pelicula p) {
 		return p.getCantdevotos();
 	}
@@ -54,9 +49,14 @@ public class Sistema {
 		return p.getClasificacion();
 	}
 	
-	public ArrayList<Pelicula>BuscarPelicula(String c){
-		ArrayList<Pelicula> aux = new ArrayList<>();
-		return aux;
+	public Iterator<Pelicula> recoPelicula(User u, int limite, Compara compare, Condicion c){
+		Iterator<Pelicula> pelis = c.getPelis(u, this.getPeliculas());
+		Collections.sort(pelis, compare);
+		return pelis.iterator();
+	}
+	
+	public Iterator<Pelicula> getPeliculas(){
+		return this.peliculas.iterator();
 	}
 
 }

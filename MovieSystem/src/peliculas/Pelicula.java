@@ -1,6 +1,7 @@
 package peliculas;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map.Entry;
 
 import users.User;
@@ -12,14 +13,14 @@ public class Pelicula {
 	private ArrayList<String>directores = new ArrayList<>();
 	private double duracion;
 	private ArrayList<String>genero = new ArrayList<>();
-	private int añoestreno;
+	private int aÃ±oestreno;
 	private HashMap<User, Integer> clasificacion = new HashMap<User,Integer>();
 	
-	public Pelicula(String titulo, String sinopsis, double duracion, int añoestreno) {
+	public Pelicula(String titulo, String sinopsis, double duracion, int aÃ±oestreno) {
 		this.titulo = titulo;
 		this.sinopsis = sinopsis;
 		this.duracion = duracion;
-		this.añoestreno = añoestreno;
+		this.aÃ±oestreno = aÃ±oestreno;
 	}
 	
 
@@ -51,8 +52,8 @@ public class Pelicula {
 		}
 	}
 	
-	 public int getAño() {
-		 return this.añoestreno;
+	 public int getAÃ±o() {
+		 return this.aÃ±oestreno;
 	 }
 	 
 	 public String getTitulo() {
@@ -74,8 +75,19 @@ public class Pelicula {
 		 if (clasif>5) {
 			 clasif=5;
 		 }
-		 this.clasificacion.put(usuario, clasif);
+		 boolean c=true;
+		 Iterator<Pelicula> a = usuario.getPelisVistas();
+		 while(a.hasNext() && c==true) {
+			 if (a.next()==this) {
+				 this.clasificacion.put(usuario, clasif);
+				 c=false;
+			 }
+		 }
 	 }
+	 
+	 public Iterator<String> getGeneros() {				
+			return this.genero.iterator();
+		}
 	 
 	public boolean equals (Object o) {
 			if (o instanceof Pelicula) {
