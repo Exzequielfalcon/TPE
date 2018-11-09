@@ -26,15 +26,15 @@ public class Grupo extends User {
 		}
 	}
 	
-	public Iterator<String> getGeneros(){
+	public HashSet<String> getGeneros(){
 		HashSet<String> aux = new HashSet<>();
 		for (User i : usuarios) { 
-			Iterator<String> generos = i.getGeneros();
-			while(generos.hasNext()) {
-				aux.add(generos.next());
+			ArrayList<String> generos = new ArrayList<String>(i.getGeneros());
+			for(String j: generos) {
+				aux.add(j);
 			}
 		}
-		return aux.iterator();
+		return aux;
 	}
 	
 	public void setMovieRate(Pelicula p, int clasificacion) {

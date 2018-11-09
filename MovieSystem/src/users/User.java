@@ -11,7 +11,7 @@ public abstract class User {
 	protected HashSet<String> generosfav = new HashSet();  //Generos favoritos
 	protected HashSet<Pelicula> pelisvistas =new HashSet(); //Peliculas Vistas
 	
-	public abstract Iterator getGeneros();
+	public abstract HashSet getGeneros();
 	public abstract void setMovieRate(Pelicula p, int clasificacion);
 	public abstract void verPelicula(Pelicula p);
 	public abstract Iterator getPelisVistas();

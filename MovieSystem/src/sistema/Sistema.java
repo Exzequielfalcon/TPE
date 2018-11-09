@@ -3,6 +3,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.Iterator;
+import java.util.List;
 
 import Comparators.Compara;
 import Comparators.ComparaPromedio;
@@ -49,14 +50,15 @@ public class Sistema {
 		return p.getClasificacion();
 	}
 	
-	public Iterator<Pelicula> recoPelicula(User u, int limite, Compara compare, Condicion c){
-		Iterator<Pelicula> pelis = c.getPelis(u, this.getPeliculas());
+	public List<Pelicula> recoPelicula(User u, int limite, Compara compare, Condicion c){
+		ArrayList<Pelicula> pelis = new ArrayList<Pelicula>(c.getPelis(u, this.getPeliculas()));
 		Collections.sort(pelis, compare);
-		return pelis.iterator();
+		pelis.subList(0, limite);
+		return pelis;
 	}
 	
-	public Iterator<Pelicula> getPeliculas(){
-		return this.peliculas.iterator();
+	public List<Pelicula> getPeliculas(){
+		return new ArrayList<Pelicula>(this.peliculas);
 	}
 
 }

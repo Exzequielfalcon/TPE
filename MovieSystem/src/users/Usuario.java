@@ -1,5 +1,6 @@
 package users;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 
@@ -41,8 +42,12 @@ public class Usuario extends User{
 		}
 	}
 	
-	public Iterator<String> getGeneros() {				
-		return this.generosfav.iterator();
+	public boolean vioPelicula(Pelicula p) {
+		return this.pelisvistas.contains(p);
+	}
+	
+	public HashSet<String> getGeneros() {				
+		return new HashSet<String>(this.generosfav);
 	}
 	
 	public boolean equals (Object o) {
