@@ -1,5 +1,15 @@
 package buscadores;
 
-public class BPorDirector {
+import peliculas.Pelicula;
 
+public class BPorDirector implements Buscador {
+private String director;
+	
+	public BPorDirector(String director) {
+		this.director=director;
+	}
+	
+	public boolean check(Pelicula p) {
+		return p.getDirectores().contains(director);
+	}
 }

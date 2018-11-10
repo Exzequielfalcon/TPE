@@ -100,4 +100,9 @@ public class Pelicula {
 	public List<String> getActores(){
 		return new ArrayList<String>(this.actores);
 	}
+
+	public List<String> getDirectores() {
+		// TODO Auto-generated method stub
+		return new ArrayList<String>(this.directores);
+	}
 }

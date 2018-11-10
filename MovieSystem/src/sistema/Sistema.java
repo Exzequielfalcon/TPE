@@ -8,6 +8,7 @@ import java.util.List;
 import Comparators.Compara;
 import Comparators.ComparaPromedio;
 import Condiciones.Condicion;
+import buscadores.Buscador;
 import peliculas.Pelicula;
 import users.Grupo;
 import users.User;
@@ -62,7 +63,13 @@ public class Sistema {
 	}
 	
 	public List<Pelicula> buscarPelicula(Buscador b){
-		
+		ArrayList<Pelicula> peli = new ArrayList<Pelicula>();
+		for(Pelicula p:peliculas) {
+			if (b.check(p)) {
+				peli.add(p);
+			}
+		}
+		return peli;
 	}
 	
 	public List<Pelicula> getPeliculas(){

@@ -9,6 +9,11 @@ import peliculas.Pelicula;
 import sistema.Sistema;
 import users.Grupo;
 import users.Usuario;
+import buscadores.BMergeAnd;
+import buscadores.BMergeOr;
+import buscadores.BPorActor;
+import buscadores.BPorAño;
+import buscadores.BPorDirector;
 
 public class main {
 
@@ -189,6 +194,11 @@ public class main {
 		ArrayList<Pelicula> pelis = new ArrayList<Pelicula>(cine.recoPelicula(Bart, 3, new ComparaPromedio(), new PelisPorGenero()));
 		for (Pelicula p:pelis) {
 			System.out.println(p.getTitulo());
+		}
+		System.out.println("----------------");
+		ArrayList<Pelicula> buscador  = new ArrayList<Pelicula>(cine.buscarPelicula(new BMergeAnd(new BPorActor("Brad Bird"), new BPorAño(2006))));
+		for(Pelicula b : buscador) {
+			System.out.println(b.getTitulo());
 		}
 		System.out.println(HombresSimpson.vioPelicula(p1));
 	}
