@@ -1,7 +1,12 @@
 
+import java.util.ArrayList;
 import java.util.Iterator;
 
+import Comparators.ComparaPromedio;
+import Condiciones.AllGeneros;
+import Condiciones.PelisPorGenero;
 import peliculas.Pelicula;
+import sistema.Sistema;
 import users.Grupo;
 import users.Usuario;
 
@@ -13,25 +18,25 @@ public class main {
 		//USUARIOS
 		
 		Usuario Lisa = new Usuario("Lisa", 8);
-		Lisa.addGeneroFavorito("Romántico");
+		Lisa.addGeneroFavorito("Romï¿½ntico");
 		Lisa.addGeneroFavorito("Musical");
 		Lisa.addGeneroFavorito("Infantil");
 		Lisa.addGeneroFavorito("Aventura");
 
-		Iterator<String> listaGeneros = Lisa.getGeneros();
-		System.out.println("GENEROS LISA\n");
-		
-		while(listaGeneros.hasNext()) {
-			System.out.println(listaGeneros.next());
-		}
-		
+//		Iterator<String> listaGeneros = Lisa.getGeneros();
+//		System.out.println("GENEROS LISA\n");
+//		
+//		while(listaGeneros.hasNext()) {
+//			System.out.println(listaGeneros.next());
+//		}
+//		
 		System.out.println("-----------------------");
 		
 		Usuario Bart = new Usuario("Bart", 10);
 		Bart.addGeneroFavorito("Musical");
 		Bart.addGeneroFavorito("Aventura");
 		Bart.addGeneroFavorito("Infantil");
-		Bart.addGeneroFavorito("Acción");
+		Bart.addGeneroFavorito("Accion");
 		
 		Usuario Maggie = new Usuario("Maggie", 1);
 		Maggie.addGeneroFavorito("Musical");
@@ -42,11 +47,11 @@ public class main {
 		Marge.addGeneroFavorito("Musical");
 		Marge.addGeneroFavorito("Aventura");
 		Marge.addGeneroFavorito("Infantil");
-		Marge.addGeneroFavorito("Romántico");
+		Marge.addGeneroFavorito("Romantico");
 		
 		Usuario Homero = new Usuario("Homero", 31);
 		Homero.addGeneroFavorito("Musical");
-		Homero.addGeneroFavorito("Acción");
+		Homero.addGeneroFavorito("Accion");
 		Homero.addGeneroFavorito("Infantil");
 		
 		//GRUPO DE USUARIOS
@@ -62,15 +67,15 @@ public class main {
 		Familia.addUser(Marge);
 		
 		System.out.println("HOMBRES SIMPSON GENEROS\n");
-		listaGeneros = HombresSimpson.getGeneros();
-		while(listaGeneros.hasNext()) {
-			System.out.println(listaGeneros.next());
-		}
+//		listaGeneros = HombresSimpson.getGeneros();
+//		while(listaGeneros.hasNext()) {
+//			System.out.println(listaGeneros.next());
+//		}
 		
 		System.out.println("-------------------------");
 		
-		Pelicula p1 = new Pelicula("Up : una aventura en la altura","Carl Fredricksen es un vendedor de globos de 78 años de edad dispuesto a cumplir su sueño: atar miles de globos a su casa y volar a Sudamérica. Sin embargo, descubre demasiado tarde a un joven e inesperado polizón. "
-				+ "Lo que en principio será recelo, acabará por tornarse simpatía hacia el muchacho mientras juntos pasan fascinantes aventuras en exóticos lugares.",1.4,2009);
+		Pelicula p1 = new Pelicula("Up : una aventura en la altura","Carl Fredricksen es un vendedor de globos de 78 aï¿½os de edad dispuesto a cumplir su sueï¿½o: atar miles de globos a su casa y volar a Sudamï¿½rica. Sin embargo, descubre demasiado tarde a un joven e inesperado polizï¿½n. "
+				+ "Lo que en principio sera recelo, acabarï¿½ por tornarse simpatia hacia el muchacho mientras juntos pasan fascinantes aventuras en exï¿½ticos lugares.",1.4,2009);
 		p1.addDirector("Pete Docter");
 		p1.addDirector("Bob Peterson");
 		p1.addActor("Pete Docter");
@@ -82,9 +87,9 @@ public class main {
 		p1.addGenero("Drama");
 
 
-		Pelicula p2 = new Pelicula(" Los Simpson"," la película La combinación de Homero (Dan Castellaneta), su nuevo puerco mascota, "
-				+ "y un silo lleno de excremento podrían provocar un desastre que amenace no sólo a Springfield, sino al mundo entero. Una muchedumbre enojada llega a la casa de los Simpson,"
-				+ " dividiendo a la familia. Con el destino de la Tierra en equilibrio, Homero se prepara para intentar redimirse con la intención de salvar al mundo y ganarse el perdón de Marge (Julie Kavner).",
+		Pelicula p2 = new Pelicula(" Los Simpson"," la pelï¿½cula La combinaciï¿½n de Homero (Dan Castellaneta), su nuevo puerco mascota, "
+				+ "y un silo lleno de excremento podrï¿½an provocar un desastre que amenace no sï¿½lo a Springfield, sino al mundo entero. Una muchedumbre enojada llega a la casa de los Simpson,"
+				+ " dividiendo a la familia. Con el destino de la Tierra en equilibrio, Homero se prepara para intentar redimirse con la intenciï¿½n de salvar al mundo y ganarse el perdï¿½n de Marge (Julie Kavner).",
 				2.0, 2007);
 		
 		p2.addDirector("David Silverman");
@@ -97,7 +102,7 @@ public class main {
 		p2.addGenero("Aventura");
 		p2.addGenero("Comedia");
 		
-		Pelicula p3 = new Pelicula("Los Increibles","Un súper héroe retirado lucha contra el aburrimiento en un suburbio y junto con su familia tiene la oportunidad de salvar al mundo.\r\n"
+		Pelicula p3 = new Pelicula("Los Increibles","Un sï¿½per hï¿½roe retirado lucha contra el aburrimiento en un suburbio y junto con su familia tiene la oportunidad de salvar al mundo.\r\n"
 				,2.0, 2004);
 		
 		p3.addDirector("Brad Bird");
@@ -109,7 +114,7 @@ public class main {
 		p3.addGenero("Aventura");
 		p3.addGenero("Accion");
 		
-		Pelicula p4 = new Pelicula("Los Increibles 2"," Helen entra en acción y debe luchar contra un cibercriminal que planea hipnotizar el mundo a través de las pantallas de las computadoras. Eso deja al Sr. Increíble con uno de sus mayores desafíos: quedarse en casa y cuidar de tres niños traviesos.\r\n"
+		Pelicula p4 = new Pelicula("Los Increibles 2"," Helen entra en acciï¿½n y debe luchar contra un cibercriminal que planea hipnotizar el mundo a travï¿½s de las pantallas de las computadoras. Eso deja al Sr. Increï¿½ble con uno de sus mayores desafï¿½os: quedarse en casa y cuidar de tres niï¿½os traviesos.\r\n"
 				,2.0, 2018);
 		
 		p4.addDirector("Brad Bird");
@@ -122,7 +127,7 @@ public class main {
 		p4.addGenero("Accion");
 		
 		
-		Pelicula p5 = new Pelicula("Toy Story","Lo mejor de la animación computarizada produce esta historia sobre juguetes que cobran vida cuando su dueño se ausenta.",
+		Pelicula p5 = new Pelicula("Toy Story","Lo mejor de la animaciï¿½n computarizada produce esta historia sobre juguetes que cobran vida cuando su dueï¿½o se ausenta.",
 				2.0, 1995);
 		
 		p5.addDirector("John Lasseter");
@@ -134,11 +139,11 @@ public class main {
 		p5.addGenero("Aventura");
 		p5.addGenero("Accion");
 		
-		Pelicula p6 = new Pelicula("Monsters Inc.","Monsters, Incorporated es la fábrica de sustos más grande en el mundo de los"
+		Pelicula p6 = new Pelicula("Monsters Inc.","Monsters, Incorporated es la fï¿½brica de sustos mï¿½s grande en el mundo de los"
 				+ " monstruos y James P. Sullivan (John Goodman) es uno de sus mejores asustadores. Sullivan es un monstruo "
-				+ "grande e intimidante de piel azul, grandes manchas color púrpura y cuernos. Su asistente, mejor amigo y "
-				+ "compañero de cuarto es Mike Wazowski (Billy Crystal), un pequeño y alegre monstruo verde con un solo ojo."
-				+ " Boo (Mary Gibbs), una niña pequeña visita lugares en donde nunca antes había estado un ser humano.\r\n"
+				+ "grande e intimidante de piel azul, grandes manchas color pï¿½rpura y cuernos. Su asistente, mejor amigo y "
+				+ "compaï¿½ero de cuarto es Mike Wazowski (Billy Crystal), un pequeï¿½o y alegre monstruo verde con un solo ojo."
+				+ " Boo (Mary Gibbs), una niï¿½a pequeï¿½a visita lugares en donde nunca antes habï¿½a estado un ser humano.\r\n"
 				,2.0, 2001);
 		
 		p6.addDirector("Pete Docter");
@@ -151,6 +156,8 @@ public class main {
 		p6.addGenero("Accion");
 		
 		Bart.verPelicula(p1);
+		Bart.verPelicula(p6);
+		Homero.verPelicula(p1);
 		Lisa.setMovieRate(p2,5);
 		Bart.setMovieRate(p3, 2);
 		Homero.setMovieRate(p3, 4);
@@ -166,7 +173,24 @@ public class main {
 		while(itPelicula.hasNext()) {
 			System.out.println(itPelicula.next().getTitulo());
 		}
-		
+		System.out.println("--------------------");
+		Sistema cine = new Sistema();
+		cine.addUser(HombresSimpson);
+		cine.addPelicula(p1);
+		cine.addPelicula(p2);
+		cine.addPelicula(p3);
+		cine.addPelicula(p4);
+		cine.addPelicula(p5);
+		cine.addPelicula(p6);
+		cine.addUser(Homero);
+		cine.addUser(Marge);
+		cine.addUser(Familia);
+		cine.addUser(Bart);
+		ArrayList<Pelicula> pelis = new ArrayList<Pelicula>(cine.recoPelicula(Bart, 3, new ComparaPromedio(), new PelisPorGenero()));
+		for (Pelicula p:pelis) {
+			System.out.println(p.getTitulo());
+		}
+		System.out.println(HombresSimpson.vioPelicula(p1));
 	}
 
 }

@@ -15,4 +15,5 @@ public abstract class User {
 	public abstract void setMovieRate(Pelicula p, int clasificacion);
 	public abstract void verPelicula(Pelicula p);
 	public abstract Iterator getPelisVistas();
+	public abstract boolean vioPelicula(Pelicula p);
 }

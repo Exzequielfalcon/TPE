@@ -53,5 +53,12 @@ public class Grupo extends User {
 		return aux.iterator();
 	}
 	
-	
+	public boolean vioPelicula(Pelicula p) {
+		for (User u:usuarios) {
+			if(!(u.vioPelicula(p))) {
+				return false;
+			}
+		}
+		return true;
+	}
 }

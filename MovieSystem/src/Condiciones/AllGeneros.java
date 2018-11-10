@@ -10,24 +10,16 @@ import users.User;
 
 public class AllGeneros implements Condicion {
 	
-	public List<Pelicula> getPelis(User u, List<Pelicula> peliculas){
-		ArrayList<Pelicula> pelis = new ArrayList<Pelicula>();
-		HashSet<String> generosUser = new HashSet<String>(u.getGeneros());
-		boolean c=true;
-		for (Pelicula p:peliculas) {
-			c=true;
-			for (String i:generosUser) {
-				ArrayList<String> generospeli = new ArrayList<String>(p.getGeneros());
-				if(!(generospeli.contains(i))) {
-					c=false;
-					break;
-				}
-			}
-			if (c==true) {
-				pelis.add(p);
-			}
-		}
-		return pelis;
+	public AllGeneros() {
+				
 	}
 	
+	public boolean getPelis(List<String> generosuser, List<String> generospelis){
+		for(String i:generosuser) {
+			if(!(generospelis.contains(i))) {
+				return false;
+			}
+		}
+		return true;
+	}
 }

@@ -21,20 +21,12 @@ public class Sistema {
 	}
 	
 	
-	public void addUsuario(Usuario u) {
+	public void addUser(User u) {
 		this.usuarios.add(u);
 	}
 	
 	public void addPelicula(Pelicula p) {
 		this.peliculas.add(p);
-	}
-	
-	public void addGrupo(Grupo g) {
-		this.usuarios.add(g);
-	}
-	
-	public void addUser(Usuario u) {
-		this.usuarios.add(u);
 	}
 	
 	public void verPelicula(Usuario u,Pelicula p, int clasif) {
@@ -51,10 +43,26 @@ public class Sistema {
 	}
 	
 	public List<Pelicula> recoPelicula(User u, int limite, Compara compare, Condicion c){
-		ArrayList<Pelicula> pelis = new ArrayList<Pelicula>(c.getPelis(u, this.getPeliculas()));
-		Collections.sort(pelis, compare);
-		pelis.subList(0, limite);
-		return pelis;
+		HashSet<Pelicula> pelis = new HashSet<Pelicula>();
+		ArrayList<String> generosUser = new ArrayList<String>(u.getGeneros());
+		for (Pelicula p:peliculas) {
+			if(!(u.vioPelicula(p))) {
+				ArrayList<String> generospeli = new ArrayList<String>(p.getGeneros());
+				if(c.getPelis(generosUser,generospeli)) {
+					pelis.add(p);
+				}
+			}	
+		}
+		ArrayList<Pelicula> peliscut =new ArrayList<Pelicula>(pelis);
+		Collections.sort(peliscut, compare);
+		if (peliscut.size()>=limite) {
+			peliscut.subList(0, limite);
+		}
+		return peliscut;
+	}
+	
+	public List<Pelicula> buscarPelicula(Buscador b){
+		
 	}
 	
 	public List<Pelicula> getPeliculas(){

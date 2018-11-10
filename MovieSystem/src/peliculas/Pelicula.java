@@ -10,20 +10,27 @@ import users.User;
 public class Pelicula {
 	private String titulo;
 	private String sinopsis;
-	private ArrayList<String>actoresprotagonicos = new ArrayList<>();
+	private ArrayList<String>actores = new ArrayList<>();
 	private ArrayList<String>directores = new ArrayList<>();
 	private double duracion;
 	private ArrayList<String>genero = new ArrayList<>();
-	private int añoestreno;
+	private int aÃ±oestreno;
 	private HashMap<User, Integer> clasificacion = new HashMap<User,Integer>();
 	
-	public Pelicula(String titulo, String sinopsis, double duracion, int añoestreno) {
+	public Pelicula(String titulo) {
+		this.titulo = titulo;
+	}
+	
+	public Pelicula(String titulo, String sinopsis, double duracion, int aÃ±oestreno) {
 		this.titulo = titulo;
 		this.sinopsis = sinopsis;
 		this.duracion = duracion;
-		this.añoestreno = añoestreno;
+		this.aÃ±oestreno = aÃ±oestreno;
 	}
 	
+	public int getCantidadDeVotos() {
+		return this.clasificacion.size();
+	}
 
 	public double getClasificacion() {
 		int cantidaddevotos = clasificacion.size();
@@ -42,8 +49,8 @@ public class Pelicula {
 	}
 	
 	public void addActor (String a) {
-		if(!(this.actoresprotagonicos.contains(a))) {
-			this.actoresprotagonicos.add(a);
+		if(!(this.actores.contains(a))) {
+			this.actores.add(a);
 		}
 	}
 	
@@ -53,17 +60,14 @@ public class Pelicula {
 		}
 	}
 	
-	 public int getAño() {
-		 return this.añoestreno;
+	 public int getAÃ±o() {
+		 return this.aÃ±oestreno;
 	 }
 	 
 	 public String getTitulo() {
 		 return this.titulo;
 	 }
 	 
-	 boolean Pertenececategoria(String cat) {
-		 return genero.contains(cat);
-	 }
 	 
 	 public int getCantdevotos() {				//VER
 		 return this.clasificacion.size();
@@ -76,14 +80,9 @@ public class Pelicula {
 		 if (clasif>5) {
 			 clasif=5;
 		 }
-		 boolean c=true;
-		 Iterator<Pelicula> a = usuario.getPelisVistas();
-		 while(a.hasNext() && c==true) {
-			 if (a.next()==this) {
-				 this.clasificacion.put(usuario, clasif);
-				 c=false;
-			 }
-		 }
+		 this.clasificacion.put(usuario, clasif);
+		 usuario.verPelicula(this);
+		
 	 }
 	 
 	 public List<String> getGeneros() {				
@@ -97,4 +96,8 @@ public class Pelicula {
 			}
 			else return false;
 		}
+
+	public List<String> getActores(){
+		return new ArrayList<String>(this.actores);
+	}
 }
