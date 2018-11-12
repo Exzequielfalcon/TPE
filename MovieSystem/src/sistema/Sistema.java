@@ -43,6 +43,10 @@ public class Sistema {
 		return p.getClasificacion();
 	}
 	
+	public List<User> getUsuarios(){
+		return new ArrayList<User>(this.usuarios);
+	}
+	
 	public List<Pelicula> recoPelicula(User u, int limite, Compara compare, Condicion c){
 		HashSet<Pelicula> pelis = new HashSet<Pelicula>();
 		ArrayList<String> generosUser = new ArrayList<String>(u.getGeneros());

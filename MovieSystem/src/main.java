@@ -3,17 +3,21 @@ import java.util.ArrayList;
 import java.util.Iterator;
 
 import Comparators.ComparaPromedio;
+import Comparators.ComparaVistos;
 import Condiciones.AllGeneros;
 import Condiciones.PelisPorGenero;
 import peliculas.Pelicula;
 import sistema.Sistema;
 import users.Grupo;
+import users.User;
 import users.Usuario;
 import buscadores.BMergeAnd;
 import buscadores.BMergeOr;
 import buscadores.BPorActor;
-import buscadores.BPorAÃ±o;
+import buscadores.BPorAñoMayor;
+import buscadores.BPorAñoMenor;
 import buscadores.BPorDirector;
+import buscadores.BPorGenero;
 
 public class main {
 
@@ -23,20 +27,11 @@ public class main {
 		//USUARIOS
 		
 		Usuario Lisa = new Usuario("Lisa", 8);
-		Lisa.addGeneroFavorito("Romï¿½ntico");
+		Lisa.addGeneroFavorito("Romantico");
 		Lisa.addGeneroFavorito("Musical");
 		Lisa.addGeneroFavorito("Infantil");
 		Lisa.addGeneroFavorito("Aventura");
-
-//		Iterator<String> listaGeneros = Lisa.getGeneros();
-//		System.out.println("GENEROS LISA\n");
-//		
-//		while(listaGeneros.hasNext()) {
-//			System.out.println(listaGeneros.next());
-//		}
-//		
-		System.out.println("-----------------------");
-		
+	
 		Usuario Bart = new Usuario("Bart", 10);
 		Bart.addGeneroFavorito("Musical");
 		Bart.addGeneroFavorito("Aventura");
@@ -71,14 +66,8 @@ public class main {
 		Familia.addUser(Homero);
 		Familia.addUser(Marge);
 		
-		System.out.println("HOMBRES SIMPSON GENEROS\n");
-//		listaGeneros = HombresSimpson.getGeneros();
-//		while(listaGeneros.hasNext()) {
-//			System.out.println(listaGeneros.next());
-//		}
 		
-		System.out.println("-------------------------");
-		
+		//PELICULAS
 		Pelicula p1 = new Pelicula("Up : una aventura en la altura","Carl Fredricksen es un vendedor de globos de 78 aï¿½os de edad dispuesto a cumplir su sueï¿½o: atar miles de globos a su casa y volar a Sudamï¿½rica. Sin embargo, descubre demasiado tarde a un joven e inesperado polizï¿½n. "
 				+ "Lo que en principio sera recelo, acabarï¿½ por tornarse simpatia hacia el muchacho mientras juntos pasan fascinantes aventuras en exï¿½ticos lugares.",1.4,2009);
 		p1.addDirector("Pete Docter");
@@ -92,7 +81,7 @@ public class main {
 		p1.addGenero("Drama");
 
 
-		Pelicula p2 = new Pelicula(" Los Simpson"," la pelï¿½cula La combinaciï¿½n de Homero (Dan Castellaneta), su nuevo puerco mascota, "
+		Pelicula p2 = new Pelicula("Los Simpson"," la pelï¿½cula La combinaciï¿½n de Homero (Dan Castellaneta), su nuevo puerco mascota, "
 				+ "y un silo lleno de excremento podrï¿½an provocar un desastre que amenace no sï¿½lo a Springfield, sino al mundo entero. Una muchedumbre enojada llega a la casa de los Simpson,"
 				+ " dividiendo a la familia. Con el destino de la Tierra en equilibrio, Homero se prepara para intentar redimirse con la intenciï¿½n de salvar al mundo y ganarse el perdï¿½n de Marge (Julie Kavner).",
 				2.0, 2007);
@@ -160,25 +149,17 @@ public class main {
 		p6.addGenero("Aventura");
 		p6.addGenero("Accion");
 		
-		Bart.verPelicula(p1);
-		Bart.verPelicula(p6);
-		Homero.verPelicula(p1);
-		Lisa.setMovieRate(p2,5);
+		//CALIFICAR
+		
+		Lisa.setMovieRate(p3,5);
 		Bart.setMovieRate(p3, 2);
 		Homero.setMovieRate(p3, 4);
 		Marge.setMovieRate(p3, 2);
 		Marge.setMovieRate(p4, 5);
 		Maggie.setMovieRate(p5, 1);
 		
-		System.out.println(p3.getClasificacion());
+		//CINE
 		
-		Iterator <Pelicula> itPelicula = HombresSimpson.getPelisVistas();
-		
-		System.out.println("VISTAS HOMBRESIMPSON");
-		while(itPelicula.hasNext()) {
-			System.out.println(itPelicula.next().getTitulo());
-		}
-		System.out.println("--------------------");
 		Sistema cine = new Sistema();
 		cine.addUser(HombresSimpson);
 		cine.addPelicula(p1);
@@ -191,16 +172,79 @@ public class main {
 		cine.addUser(Marge);
 		cine.addUser(Familia);
 		cine.addUser(Bart);
-		ArrayList<Pelicula> pelis = new ArrayList<Pelicula>(cine.recoPelicula(Bart, 3, new ComparaPromedio(), new PelisPorGenero()));
+		cine.addUser(HermanosSimpson);
+		cine.addUser(HombresSimpson);
+		cine.addUser(Maggie);
+		cine.addUser(Lisa);
+		
+		//MAIN
+		
+		Iterator<Pelicula> margePV = Marge.getPelisVistas();
+		System.out.println("Peliculas vistas MARGE\n");
+		
+		while(margePV.hasNext()) {
+			System.out.println(margePV.next().getTitulo());
+		}
+		
+		System.out.println("-----------------------\n");
+	
+		Iterator<Pelicula> bartPV = Bart.getPelisVistas();
+		System.out.println("Peliculas vistas BART\n");
+		
+		while(bartPV.hasNext()) {
+			System.out.println(bartPV.next().getTitulo());
+		}
+		
+		System.out.println("-----------------------\n");
+	
+		//RECOMENDACIONES
+		
+		for (User u:cine.getUsuarios()) {
+			System.out.println("TODOS");
+			ArrayList<Pelicula> recoAll = new ArrayList<Pelicula>(cine.recoPelicula(u, 2, new ComparaVistos(), new AllGeneros()));
+			ShowReco(recoAll, u.getNombre());
+		}
+		
+		for (User usu:cine.getUsuarios()) {
+			System.out.println("ALGUNOS");
+			ArrayList<Pelicula> recoAll = new ArrayList<Pelicula>(cine.recoPelicula(usu, 5, new ComparaPromedio(), new PelisPorGenero()));
+			ShowReco(recoAll, usu.getNombre());
+		}
+		
+		//CALIFICAR
+		
+		HermanosSimpson.setMovieRate(p1, 4);
+		
+		//BUSQUEDA
+		
+		ArrayList<Pelicula> buscador  = new ArrayList<Pelicula>(cine.buscarPelicula(new BMergeAnd(new BPorActor("Pete Docter"), new BPorDirector("Pete Docter"))));
+		ShowBusqueda(buscador,"Pete Docter");
+		
+		ArrayList<Pelicula> buscador2  = new ArrayList<Pelicula>(cine.buscarPelicula(new BPorActor("Tom Hanks")));
+		ShowBusqueda(buscador2,"Tom Hanks");
+		
+		ArrayList<Pelicula> buscador3  = new ArrayList<Pelicula>(cine.buscarPelicula(new BPorAñoMayor(2000)));
+		ShowBusqueda(buscador3,"A partir del 2000");
+		
+		ArrayList<Pelicula> buscador4 = new ArrayList<Pelicula>(cine.buscarPelicula(new BMergeOr(new BMergeOr(new BPorGenero("Romantico"),new BPorGenero("Comedia")),new BPorGenero("Drama"))));
+		ShowBusqueda(buscador4,"por Comedia, Romanticos y Drama");
+		
+	}
+	
+	public static void ShowBusqueda(ArrayList<Pelicula> pelis, String nombre) {
+		System.out.println("Busqueda "+ nombre + "\n");
 		for (Pelicula p:pelis) {
 			System.out.println(p.getTitulo());
 		}
-		System.out.println("----------------");
-		ArrayList<Pelicula> buscador  = new ArrayList<Pelicula>(cine.buscarPelicula(new BMergeAnd(new BPorActor("Brad Bird"), new BPorAÃ±o(2006))));
-		for(Pelicula b : buscador) {
-			System.out.println(b.getTitulo());
+		System.out.println("------------------------------\n");
+	}
+	
+	public static void ShowReco(ArrayList<Pelicula> pelis, String nombre) {
+		System.out.println("Recomendadas para "+ nombre + "\n");
+		for (Pelicula p:pelis) {
+			System.out.println(p.getTitulo());
 		}
-		System.out.println(HombresSimpson.vioPelicula(p1));
+		System.out.println("------------------------------\n");
 	}
 
 }
