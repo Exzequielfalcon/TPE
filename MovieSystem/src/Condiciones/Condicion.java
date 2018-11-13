@@ -7,5 +7,5 @@ import peliculas.Pelicula;
 import users.User;
 
 public interface Condicion {
-	public abstract boolean getPelis(List<String> generosuser, List<String> generospelis);
+	public abstract boolean recomendar(User u, Pelicula p);
 }

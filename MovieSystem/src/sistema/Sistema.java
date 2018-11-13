@@ -17,8 +17,12 @@ import users.Usuario;
 public class Sistema {
 	private HashSet<Pelicula> peliculas = new HashSet<>();
 	private HashSet<User> usuarios = new HashSet<>();
+	private Compara compare;
+	private Condicion condicion;
 	
-	public Sistema() {
+	public Sistema(Compara compare, Condicion c) {
+		this.compare=compare;
+		this.condicion=c;
 	}
 	
 	
@@ -47,23 +51,22 @@ public class Sistema {
 		return new ArrayList<User>(this.usuarios);
 	}
 	
+	public List<Pelicula> recoPelicula(User u, int limite){
+		return recoPelicula(u,limite,this.compare,this.condicion);
+	}
+	
 	public List<Pelicula> recoPelicula(User u, int limite, Compara compare, Condicion c){
-		HashSet<Pelicula> pelis = new HashSet<Pelicula>();
-		ArrayList<String> generosUser = new ArrayList<String>(u.getGeneros());
+		ArrayList<Pelicula> pelis = new ArrayList<Pelicula>();
 		for (Pelicula p:peliculas) {
-			if(!(u.vioPelicula(p))) {
-				ArrayList<String> generospeli = new ArrayList<String>(p.getGeneros());
-				if(c.getPelis(generosUser,generospeli)) {
+			if(!(u.vioPelicula(p)) && (c.recomendar(u,p))) {
 					pelis.add(p);
 				}
-			}	
 		}
-		ArrayList<Pelicula> peliscut =new ArrayList<Pelicula>(pelis);
-		Collections.sort(peliscut, compare);
-		if (peliscut.size()>=limite) {
-			peliscut.subList(0, limite);
+		Collections.sort(pelis, compare.reversed());
+		if (pelis.size()>limite) {
+			pelis.subList(0, limite);
 		}
-		return peliscut;
+		return pelis;
 	}
 	
 	public List<Pelicula> buscarPelicula(Buscador b){

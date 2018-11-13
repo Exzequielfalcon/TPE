@@ -14,8 +14,9 @@ import users.Usuario;
 import buscadores.BMergeAnd;
 import buscadores.BMergeOr;
 import buscadores.BPorActor;
-import buscadores.BPorA�oMayor;
-import buscadores.BPorA�oMenor;
+import buscadores.BPorAñoMayor;
+import buscadores.BPorAñoMayor;
+import buscadores.BPorAñoMenor;
 import buscadores.BPorDirector;
 import buscadores.BPorGenero;
 
@@ -160,7 +161,7 @@ public class main {
 		
 		//CINE
 		
-		Sistema cine = new Sistema();
+		Sistema cine = new Sistema(new ComparaPromedio(),new AllGeneros());
 		cine.addUser(HombresSimpson);
 		cine.addPelicula(p1);
 		cine.addPelicula(p2);
@@ -201,13 +202,15 @@ public class main {
 		
 		for (User u:cine.getUsuarios()) {
 			System.out.println("TODOS");
-			ArrayList<Pelicula> recoAll = new ArrayList<Pelicula>(cine.recoPelicula(u, 2, new ComparaVistos(), new AllGeneros()));
+			ArrayList<Pelicula> recoAll = new ArrayList<Pelicula>(cine.recoPelicula(u, 2, 
+					new ComparaVistos(), new AllGeneros()));
 			ShowReco(recoAll, u.getNombre());
 		}
 		
 		for (User usu:cine.getUsuarios()) {
 			System.out.println("ALGUNOS");
-			ArrayList<Pelicula> recoAll = new ArrayList<Pelicula>(cine.recoPelicula(usu, 5, new ComparaPromedio(), new PelisPorGenero()));
+			ArrayList<Pelicula> recoAll = new ArrayList<Pelicula>(cine.recoPelicula(usu,
+					5, new ComparaPromedio(), new PelisPorGenero()));
 			ShowReco(recoAll, usu.getNombre());
 		}
 		
@@ -223,7 +226,7 @@ public class main {
 		ArrayList<Pelicula> buscador2  = new ArrayList<Pelicula>(cine.buscarPelicula(new BPorActor("Tom Hanks")));
 		ShowBusqueda(buscador2,"Tom Hanks");
 		
-		ArrayList<Pelicula> buscador3  = new ArrayList<Pelicula>(cine.buscarPelicula(new BPorA�oMayor(2000)));
+		ArrayList<Pelicula> buscador3  = new ArrayList<Pelicula>(cine.buscarPelicula(new BPorAñoMayor(2000)));
 		ShowBusqueda(buscador3,"A partir del 2000");
 		
 		ArrayList<Pelicula> buscador4 = new ArrayList<Pelicula>(cine.buscarPelicula(new BMergeOr(new BMergeOr(new BPorGenero("Romantico"),new BPorGenero("Comedia")),new BPorGenero("Drama"))));

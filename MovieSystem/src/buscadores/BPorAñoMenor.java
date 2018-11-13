@@ -2,15 +2,15 @@ package buscadores;
 
 import peliculas.Pelicula;
 
-public class BPorAñoMenor implements Buscador{
+public class BPorAÃ±oMenor implements Buscador{
 	
-	private int año;
+	private int aÃ±o;
 	
-	public BPorAñoMenor(int año) {
-		this.año=año;
+	public BPorAÃ±oMenor(int aÃ±o) {
+		this.aÃ±o=aÃ±o;
 	}
 	
 	public boolean check(Pelicula p) {
-		return p.getAño()<=año;
+		return p.getAÃ±o()<=aÃ±o;
 	}
 }
