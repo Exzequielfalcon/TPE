@@ -34,12 +34,16 @@ public class Pelicula {
 
 	public double getClasificacion() {
 		int cantidaddevotos = clasificacion.size();
-		double auxsuma=0;
-		for(Entry<User, Integer> entry : this.clasificacion.entrySet()) {
-		    double value = entry.getValue();
-		    auxsuma+=value;
-		}
-		return auxsuma/cantidaddevotos;
+		if(cantidaddevotos!=0) {
+			double auxsuma=0;
+			for(Entry<User, Integer> entry : this.clasificacion.entrySet()) {
+			    double value = entry.getValue();
+			    auxsuma+=value;
+			  
+			}
+			return auxsuma/cantidaddevotos;
+		} else return 0.0;
+		
 	}
 	
 	public void addGenero(String c) {
@@ -82,7 +86,6 @@ public class Pelicula {
 		 }
 		 this.clasificacion.put(usuario, clasif);
 		 usuario.verPelicula(this);
-		
 	 }
 	 
 	 public List<String> getGeneros() {				
@@ -101,12 +104,8 @@ public class Pelicula {
 		return this.genero.contains(s);
 	}
 	
-	public boolean equals (Object o) {
-			if (o instanceof Pelicula) {
-				Pelicula temp=(Pelicula) o;
-				return this.titulo.equals(temp.getTitulo());
-			}
-			else return false;
+	public boolean equals (Pelicula p) {
+				return this.titulo.equals(p.getTitulo());
 		}
 
 	public List<String> getActores(){
@@ -117,4 +116,11 @@ public class Pelicula {
 		// TODO Auto-generated method stub
 		return new ArrayList<String>(this.directores);
 	}
+
+	@Override
+	public String toString() {
+		return titulo + ", year: " + anioestreno + ", clasificacion: " + getClasificacion();
+	}
+	
+	
 }

@@ -177,7 +177,7 @@ public class main {
 		cine.addUser(HombresSimpson);
 		cine.addUser(Maggie);
 		cine.addUser(Lisa);
-		
+		HermanosSimpson.setMovieRate(p1, 4);
 		//MAIN
 		
 		Iterator<Pelicula> margePV = Marge.getPelisVistas();
@@ -216,8 +216,6 @@ public class main {
 		
 		//CALIFICAR
 		
-		HermanosSimpson.setMovieRate(p1, 4);
-		
 		//BUSQUEDA
 		
 		ArrayList<Pelicula> buscador  = new ArrayList<Pelicula>(cine.buscarPelicula(new BMergeAnd(new BPorActor("Pete Docter"), new BPorDirector("Pete Docter"))));
@@ -237,7 +235,7 @@ public class main {
 	public static void ShowBusqueda(ArrayList<Pelicula> pelis, String nombre) {
 		System.out.println("Busqueda "+ nombre + "\n");
 		for (Pelicula p:pelis) {
-			System.out.println(p.getTitulo());
+			System.out.println(p);
 		}
 		System.out.println("------------------------------\n");
 	}
@@ -245,7 +243,7 @@ public class main {
 	public static void ShowReco(ArrayList<Pelicula> pelis, String nombre) {
 		System.out.println("Recomendadas para "+ nombre + "\n");
 		for (Pelicula p:pelis) {
-			System.out.println(p.getTitulo());
+			System.out.println(p);
 		}
 		System.out.println("------------------------------\n");
 	}

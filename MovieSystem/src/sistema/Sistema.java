@@ -58,13 +58,15 @@ public class Sistema {
 	public List<Pelicula> recoPelicula(User u, int limite, Compara compare, Condicion c){
 		ArrayList<Pelicula> pelis = new ArrayList<Pelicula>();
 		for (Pelicula p:peliculas) {
-			if(!((u.vioPelicula(p))) && (c.recomendar(u,p))) {
+			if(((!(u.vioPelicula(p)))) && (c.recomendar(u,p))) {
 					pelis.add(p);
 				}
 		}
 		Collections.sort(pelis, compare.reversed());
-		if (pelis.size()>limite) {
-			pelis.subList(0, limite);
+		int i= pelis.size()-1;
+		while(i>=limite) {
+			i--;
+			pelis.remove(i);
 		}
 		return pelis;
 	}
