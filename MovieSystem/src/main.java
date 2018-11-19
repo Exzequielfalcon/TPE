@@ -14,9 +14,9 @@ import users.Usuario;
 import buscadores.BMergeAnd;
 import buscadores.BMergeOr;
 import buscadores.BPorActor;
-import buscadores.BPorAñoMayor;
-import buscadores.BPorAñoMayor;
-import buscadores.BPorAñoMenor;
+import buscadores.BPorAnioMayor;
+import buscadores.BPorAnioMayor;
+import buscadores.BPorAnioMenor;
 import buscadores.BPorDirector;
 import buscadores.BPorGenero;
 
@@ -226,7 +226,7 @@ public class main {
 		ArrayList<Pelicula> buscador2  = new ArrayList<Pelicula>(cine.buscarPelicula(new BPorActor("Tom Hanks")));
 		ShowBusqueda(buscador2,"Tom Hanks");
 		
-		ArrayList<Pelicula> buscador3  = new ArrayList<Pelicula>(cine.buscarPelicula(new BPorAñoMayor(2000)));
+		ArrayList<Pelicula> buscador3  = new ArrayList<Pelicula>(cine.buscarPelicula(new BPorAnioMayor(2000)));
 		ShowBusqueda(buscador3,"A partir del 2000");
 		
 		ArrayList<Pelicula> buscador4 = new ArrayList<Pelicula>(cine.buscarPelicula(new BMergeOr(new BMergeOr(new BPorGenero("Romantico"),new BPorGenero("Comedia")),new BPorGenero("Drama"))));

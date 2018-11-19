@@ -10,6 +10,6 @@ private String director;
 	}
 	
 	public boolean check(Pelicula p) {
-		return p.getDirectores().contains(director);
+		return p.contieneDirector(director);
 	}
 }

@@ -15,10 +15,9 @@ public class AllGeneros implements Condicion {
 	}
 	
 	public boolean recomendar(User u, Pelicula p){
-		ArrayList<String> generospeli = new ArrayList<String>(p.getGeneros());
 		ArrayList<String> generosUser = new ArrayList<String>(u.getGeneros());
 		for(String i:generosUser) {
-			if(!(generospeli.contains(i))) {
+			if(!(p.contieneGenero(i))) {
 				return false;
 			}
 		}

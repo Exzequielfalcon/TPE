@@ -14,18 +14,18 @@ public class Pelicula {
 	private ArrayList<String>directores = new ArrayList<>();
 	private double duracion;
 	private ArrayList<String>genero = new ArrayList<>();
-	private int añoestreno;
+	private int anioestreno;
 	private HashMap<User, Integer> clasificacion = new HashMap<User,Integer>();
 	
 	public Pelicula(String titulo) {
 		this.titulo = titulo;
 	}
 	
-	public Pelicula(String titulo, String sinopsis, double duracion, int añoestreno) {
+	public Pelicula(String titulo, String sinopsis, double duracion, int anioestreno) {
 		this.titulo = titulo;
 		this.sinopsis = sinopsis;
 		this.duracion = duracion;
-		this.añoestreno = añoestreno;
+		this.anioestreno = anioestreno;
 	}
 	
 	public int getCantidadDeVotos() {
@@ -60,8 +60,8 @@ public class Pelicula {
 		}
 	}
 	
-	 public int getAño() {
-		 return this.añoestreno;
+	 public int getAnio() {
+		 return this.anioestreno;
 	 }
 	 
 	 public String getTitulo() {
@@ -87,8 +87,20 @@ public class Pelicula {
 	 
 	 public List<String> getGeneros() {				
 			return new ArrayList<String>(this.genero);
-		}
+	}
 	 
+	public boolean contieneActor(String s) {
+		return this.actores.contains(s);
+	}
+	
+	public boolean contieneDirector(String s) {
+		return this.directores.contains(s);
+	}
+	
+	public boolean contieneGenero(String s) {
+		return this.genero.contains(s);
+	}
+	
 	public boolean equals (Object o) {
 			if (o instanceof Pelicula) {
 				Pelicula temp=(Pelicula) o;

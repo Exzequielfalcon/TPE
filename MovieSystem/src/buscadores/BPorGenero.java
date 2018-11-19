@@ -10,6 +10,6 @@ public class BPorGenero implements Buscador{
 	}
 	
 	public boolean check(Pelicula p) {
-		return p.getGeneros().contains(genero);
+		return p.contieneGenero(genero);
 	}
 }

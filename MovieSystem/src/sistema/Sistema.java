@@ -58,7 +58,7 @@ public class Sistema {
 	public List<Pelicula> recoPelicula(User u, int limite, Compara compare, Condicion c){
 		ArrayList<Pelicula> pelis = new ArrayList<Pelicula>();
 		for (Pelicula p:peliculas) {
-			if(!(u.vioPelicula(p)) && (c.recomendar(u,p))) {
+			if(!((u.vioPelicula(p))) && (c.recomendar(u,p))) {
 					pelis.add(p);
 				}
 		}

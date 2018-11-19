@@ -10,6 +10,6 @@ public class BPorActor implements Buscador{
 	}
 	
 	public boolean check(Pelicula p) {
-		return p.getActores().contains(actor);
+		return p.contieneActor(actor);
 	}
 }	
